@@ -9,6 +9,7 @@ services:
     env_file:
       - .env.production
     volumes:
+      - ./app:/rails/app
       - ./public:/rails/public
       - ./log:/rails/log
       - ./storage:/rails/storage
