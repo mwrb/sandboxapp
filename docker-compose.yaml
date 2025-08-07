@@ -9,8 +9,7 @@ services:
     env_file:
       - .env.production
     volumes:
-      - ./log:/app/log
-      - ./storage:/app/storage
+      - .:/app
     networks:
       - app-network
 
