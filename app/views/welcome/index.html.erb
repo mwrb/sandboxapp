@@ -1,68 +1,42 @@
-<h1>All Offers: <%= @offers.size%></h1>
+<div class="container">
+  <h1>All Offers: <%= @offers.size%></h1>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Country</th>
-      <th>City</th>
-      <th>Region</th>
-      <th>Price</th>
-      <th>Airport</th>
-      <th>Departure</th>
-      <th>Return</th>
-      <th>Rating</th>
-      <th>Reviews</th>
-      <th>Standard</th>
-      <th>Type</th>
-      <th>Link</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @offers.each do |offer| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= offer[:country] %></td>
-        <td><%= offer[:city] %></td>
-        <td><%= offer[:region] %></td>
-        <td><%= number_to_currency(offer[:price].to_i, unit: "zł") %></td>
-        <td><%= offer[:airport] %></td>
-        <td><%= offer[:departure] %></td>
-        <td><%= offer[:return] %></td>
-        <td><%= offer[:trip_advisor_rating] %></td>
-        <td><%= offer[:trip_advisor_reviews] %></td>
-        <td><%= '★'*offer[:standard] %><%= '☆'*(5-offer[:standard]) %></td>
-        <td><%= offer[:type] %></td>
-        <td><%= link_to "View", offer[:url], target: "_blank" %></td>
+        <th>Country</th>
+        <th>City</th>
+        <th>Region</th>
+        <th>Price</th>
+        <th>Airport</th>
+        <th>Departure</th>
+        <th>Return</th>
+        <th>Rating</th>
+        <th>Reviews</th>
+        <th>Standard</th>
+        <th>Type</th>
+        <th>Link</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @offers.each do |offer| %>
+        <tr>
+          <td><%= offer[:country] %></td>
+          <td><%= offer[:city] %></td>
+          <td><%= offer[:region] %></td>
+          <td><%= number_to_currency(offer[:price].to_i, unit: "zł") %></td>
+          <td><%= offer[:airport] %></td>
+          <td><%= offer[:departure] %></td>
+          <td><%= offer[:return] %></td>
+          <td><%= offer[:trip_advisor_rating] %></td>
+          <td><%= offer[:trip_advisor_reviews] %></td>
+          <td><%= '★'*offer[:standard] %><%= '☆'*(5-offer[:standard]) %></td>
+          <td><%= offer[:type] %></td>
+          <td><%= link_to "View", offer[:url], target: "_blank" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-
-
-
-<div class="row row-cols-1 g-3">
-  <% @offers.each do |offer| %>
-    <div class="col">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= offer[:city] %>, <%= offer[:region] %> (<%= offer[:country] %>)
-          </h5>
-
-          <ul class="list-unstyled mb-3">
-            <li><strong>Price:</strong> <%= number_to_currency(offer[:price].to_i, unit: "zł") %></li>
-            <li><strong>Airport:</strong> <%= offer[:airport] %></li>
-            <li><strong>Departure:</strong> <%= offer[:departure] %></li>
-            <li><strong>Return:</strong> <%= offer[:return] %></li>
-            <li><strong>Rating:</strong> <%= offer[:trip_advisor_rating] %> ⭐ (<%= offer[:trip_advisor_reviews] %> reviews)</li>
-            <li><strong>Standard:</strong> <%= '★'*offer[:standard] %><%= '☆'*(5-offer[:standard]) %></li>
-            <li><strong>Type:</strong> <%= offer[:type] %></li>
-          </ul>
-
-          <%= link_to "View Offer", offer[:url], target: "_blank", class: "btn btn-primary" %>
-        </div>
-      </div>
-    </div>
-  <% end %>
 </div>
